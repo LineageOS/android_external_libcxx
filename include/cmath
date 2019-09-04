@@ -299,6 +299,7 @@ long double    truncl(long double x);
 
 #include <__config>
 #include <math.h>
+#include <limits>
 #include <type_traits>
 
 #ifdef _LIBCPP_MSVCRT
@@ -632,6 +633,9 @@ isunordered(_A1 __lcpp_x, _A2 __lcpp_y) _NOEXCEPT
 }
 
 #endif  // isunordered
+
+_LIBCPP_PUSH_MACROS
+#include <__undef_macros>
 
 _LIBCPP_BEGIN_NAMESPACE_STD
 
@@ -1624,6 +1628,36 @@ inline _LIBCPP_INLINE_VISIBILITY
 typename enable_if<is_integral<_A1>::value, double>::type
 trunc(_A1 __lcpp_x) _NOEXCEPT {return trunc((double)__lcpp_x);}
 
+template <class _IntT, class _FloatT,
+    bool _FloatBigger = (numeric_limits<_FloatT>::digits > numeric_limits<_IntT>::digits),
+    int _Bits = (numeric_limits<_IntT>::digits - numeric_limits<_FloatT>::digits)>
+_LIBCPP_INLINE_VISIBILITY
+_LIBCPP_CONSTEXPR _IntT __max_representable_int_for_float() _NOEXCEPT {
+  static_assert(is_floating_point<_FloatT>::value, "must be a floating point type");
+  static_assert(is_integral<_IntT>::value, "must be an integral type");
+  static_assert(numeric_limits<_FloatT>::radix == 2, "FloatT has incorrect radix");
+  static_assert(is_same<_FloatT, float>::value || is_same<_FloatT, double>::value
+               || is_same<_FloatT,long double>::value, "unsupported floating point type");
+  return _FloatBigger ? numeric_limits<_IntT>::max() :  (numeric_limits<_IntT>::max() >> _Bits << _Bits);
+}
+
+// Convert a floating point number to the specified integral type after
+// clamping to the integral types representable range.
+//
+// The behavior is undefined if `__r` is NaN.
+template <class _IntT, class _RealT>
+_LIBCPP_INLINE_VISIBILITY
+_IntT __clamp_to_integral(_RealT __r) _NOEXCEPT {
+  using _Lim = numeric_limits<_IntT>;
+  const _IntT _MaxVal = std::__max_representable_int_for_float<_IntT, _RealT>();
+  if (__r >= ::nextafter(static_cast<_RealT>(_MaxVal), INFINITY)) {
+    return _Lim::max();
+  } else if (__r <= _Lim::lowest()) {
+    return _Lim::min();
+  }
+  return static_cast<_IntT>(__r);
+}
+
 #endif // !_LIBCPP_MSVCRT
 
 using ::acosl;
@@ -1693,5 +1727,7 @@ using ::lgamma;
 using ::lgammaf;
 #endif // __sun__
 _LIBCPP_END_NAMESPACE_STD
+
+_LIBCPP_POP_MACROS
 
 #endif  // _LIBCPP_CMATH
