@@ -146,9 +146,10 @@ cc_library_static {
     ],
 }
 
-cc_library_static {
+cc_library {
     name: "libc++fs",
     recovery_available: true,
+    vendor_available: true,
     defaults: ["libc++ defaults"],
     srcs: [
         "src/filesystem/directory_iterator.cpp",
