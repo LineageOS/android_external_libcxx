@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03505282_36df2e1d",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2019-09-06T20:57:59Z",
+      "side": 1,
+      "message": "cc_library",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 17
+      },
+      "revId": "815285f422c3be8e71325426c26b7072c5c83928",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "964b965c_58ff7f84",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2019-09-06T20:57:59Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 1
+      },
+      "revId": "815285f422c3be8e71325426c26b7072c5c83928",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
