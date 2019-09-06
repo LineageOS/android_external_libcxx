@@ -149,6 +149,7 @@ cc_library_static {
 cc_library_static {
     name: "libc++fs",
     recovery_available: true,
+    vendor_available: true,
     defaults: ["libc++ defaults"],
     srcs: [
         "src/filesystem/directory_iterator.cpp",
@@ -168,6 +169,12 @@ cc_library_static {
             enabled: false,
         },
     },
+}
+
+cc_library_shared {
+    name: "libc++fs_shared",
+    vendor_available: true,
+    whole_static_libs: ["libc++fs"],
 }
 
 // This target is used to extract the build commands for a test executable.
