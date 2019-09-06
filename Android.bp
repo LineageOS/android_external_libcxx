@@ -201,13 +201,12 @@ cc_library_static {
     ],
 }
 
-// Not available to vendor modules until libc++ is updated and this library is
-// merged into libc++ proper.
-// Follow http://b/175635923 for progress.
-cc_library_static {
+cc_library {
     name: "libc++fs",
     ramdisk_available: true,
     recovery_available: true,
+    vendor_available: true,
+    shared_libs: [ "libc++" ],
     apex_available: [
         "//apex_available:platform",
         "com.android.art",
