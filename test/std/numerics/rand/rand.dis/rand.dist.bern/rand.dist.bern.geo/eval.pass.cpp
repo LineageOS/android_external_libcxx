@@ -29,6 +29,11 @@ sqr(T x)
     return x * x;
 }
 
+struct Eng : std::mt19937 {
+  using Base = std::mt19937;
+  using Base::Base;
+};
+
 int main()
 {
     {
@@ -270,5 +275,13 @@ int main()
         assert(std::abs((var - x_var) / x_var) < 0.01);
         assert(std::abs((skew - x_skew) / x_skew) < 0.01);
         assert(std::abs((kurtosis - x_kurtosis) / x_kurtosis) < 0.02);
+    }
+    {
+        Eng engine;
+        std::geometric_distribution<std::int16_t> distribution(5.45361e-311);
+        for (auto i=0; i < 1000; ++i) {
+                  volatile auto res = distribution(engine);
+            ((void)res);
+        }
     }
 }
