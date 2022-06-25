@@ -168,6 +168,9 @@ cc_library_shared {
 
     target: {
         darwin: {
+            // TODO: LLD does not implement force_symbols_weak_list or
+            // force_symbols_not_weak_list. Opt out and keep using ld64.
+            use_clang_lld: false,
             unexported_symbols_list: "lib/libc++unexp.exp",
             force_symbols_not_weak_list: "lib/notweak.exp",
             force_symbols_weak_list: "lib/weak.exp",
