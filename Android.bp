@@ -208,7 +208,7 @@ cc_library_static {
         "//apex_available:platform",
         "com.android.art",
         "com.android.art.debug",
-        "com.android.bluetooth",
+        "com.android.btservices",
     ],
     // being part of updatable apexes, this should work on older releases
     min_sdk_version: "apex_inherit",
