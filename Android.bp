@@ -282,23 +282,6 @@ cc_binary {
     cpp_std: "c++17",
 }
 
-python_test {
-    name: "filesystem_dynamic_test_helper.py",
-    main: "test/support/filesystem_dynamic_test_helper.py",
-    srcs: [
-        "test/support/filesystem_dynamic_test_helper.py",
-    ],
-    version: {
-        py2: {
-            enabled: true,
-            embedded_launcher: true,
-        },
-        py3: {
-            enabled: false,
-        },
-    },
-}
-
 // Export libc++ headers for inclusion in the musl sysroot.
 genrule {
     name: "libc_musl_sysroot_libc++_headers",
