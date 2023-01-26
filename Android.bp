@@ -96,6 +96,10 @@ cc_library_static {
     ],
     // being part of updatable apexes, this should work on older releases
     min_sdk_version: "apex_inherit",
+    // sdk_version normally isn't needed as only the platform variant
+    // is used, except on riscv64 which doesn't have an NDK libc++ and
+    // reuses this module for sdk variants.
+    sdk_version: "current",
     native_bridge_supported: true,
     srcs: [
         "src/algorithm.cpp",
@@ -161,6 +165,10 @@ cc_library_shared {
     ],
     // being part of updatable apexes, this should work on older releases
     min_sdk_version: "apex_inherit",
+    // sdk_version normally isn't needed as only the platform variant
+    // is used, except on riscv64 which doesn't have an NDK libc++ and
+    // reuses this module for sdk variants.
+    sdk_version: "current",
     whole_static_libs: ["libc++_static"],
     stl: "none",
 
