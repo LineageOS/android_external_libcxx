@@ -252,6 +252,7 @@ cc_binary {
         "-fsized-deallocation",
         "-fexceptions",
         "-fcoroutines-ts",
+        "-Wno-deprecated-experimental-coroutine",
         "-Wno-format-zero-length",
         "-Wno-implicit-fallthrough",
         "-Wno-non-virtual-dtor",
