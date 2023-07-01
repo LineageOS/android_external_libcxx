@@ -172,9 +172,6 @@ cc_library_shared {
     whole_static_libs: ["libc++_static"],
     stl: "none",
 
-    lto: {
-        thin: true,
-    },
     afdo: true,
 
     target: {
