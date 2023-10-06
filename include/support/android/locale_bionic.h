@@ -26,14 +26,15 @@ extern "C" {
 
 #if defined(__ANDROID__)
 
+#include <android/api-level.h>
+#if __ANDROID_API__ < 21
 #include <support/xlocale/__posix_l_fallback.h>
+#endif
 
 // If we do not have this header, we are in a platform build rather than an NDK
 // build, which will always be at least as new as the ToT NDK, in which case we
 // don't need any of the inlines below since libc provides them.
 #if __has_include(<android/ndk-version.h>)
-
-#include <android/api-level.h>
 #include <android/ndk-version.h>
 // In NDK versions later than 16, locale-aware functions are provided by
 // legacy_stdlib_inlines.h
