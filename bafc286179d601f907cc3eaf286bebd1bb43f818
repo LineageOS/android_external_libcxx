@@ -16,6 +16,23 @@
       "message": "Double check this btw https://review.lineageos.org/c/LineageOS/android_bionic/+/367750",
       "revId": "bafc286179d601f907cc3eaf286bebd1bb43f818",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb213612_0d9674e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2023-10-30T19:40:49Z",
+      "side": 1,
+      "message": "Verified building the tegra light hal.",
+      "revId": "bafc286179d601f907cc3eaf286bebd1bb43f818",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
