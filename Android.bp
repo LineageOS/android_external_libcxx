@@ -246,8 +246,6 @@ cc_binary {
     cppflags: [
         "-fsized-deallocation",
         "-fexceptions",
-        "-fcoroutines-ts",
-        "-Wno-deprecated-experimental-coroutine",
         "-Wno-format-zero-length",
         "-Wno-implicit-fallthrough",
         "-Wno-non-virtual-dtor",
@@ -295,8 +293,10 @@ genrule {
     name: "libc_musl_sysroot_libc++_headers",
     visibility: ["//external/musl"],
     srcs: [
+        "LICENSE.TXT",
         "NOTICE",
         "include/**/*",
+        ":libcxxabi_headers",
     ],
     out: ["libc_musl_sysroot_libc++_headers.zip"],
     tools: [
